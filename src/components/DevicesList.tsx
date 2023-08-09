@@ -1,5 +1,6 @@
 import { useDevices } from '../service/useDevices.ts';
 import { deleteDevice, editDevice, useFlowControllerDispatch } from './FlowController.tsx';
+import { DevicesTable } from './DevicesTable.tsx';
 
 export const DevicesList = () => {
   const { devices } = useDevices();
@@ -27,6 +28,7 @@ export const DevicesList = () => {
           ))
         }
       </div>
+      <DevicesTable />
     </div>
   );
 };
