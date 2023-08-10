@@ -16,6 +16,8 @@ import {
   TableRow
 } from '@mui/material';
 
+import { RowActions } from './RowActions.tsx';
+
 const columnHelper = createColumnHelper<Device>();
 
 const columns = [
@@ -33,7 +35,7 @@ const columns = [
   }),
   columnHelper.display({
     id: 'actions',
-    cell: () => <div />,
+    cell: (props) => <RowActions {...props} />,
   }),
 ]
 
@@ -47,7 +49,7 @@ export const DevicesTable = () => {
 
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 600 }}>
+      <Table>
         <TableHead>
         {table.getHeaderGroups().map(headerGroup => (
           <TableRow key={headerGroup.id}>
