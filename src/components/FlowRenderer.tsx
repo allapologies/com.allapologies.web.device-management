@@ -1,15 +1,18 @@
 import { FLOWS, useFlowControllerState } from './FlowController.tsx';
+import { NewDeviceFlow } from './NewDeviceFlow.tsx';
+import { EditDeviceFlow } from './EditDeviceFlow.tsx';
+import { DeleteDeviceFlow } from './DeleteDeviceFlow.tsx';
 
 export const FlowRenderer = () => {
   const { flow } = useFlowControllerState();
 
   switch (flow) {
     case FLOWS.NEW_DEVICE:
-      return <div>new</div>;
+      return <NewDeviceFlow />;
     case FLOWS.EDIT_DEVICE:
-      return <div>edit</div>;
+      return <EditDeviceFlow />;
     case FLOWS.DELETE_DEVICE:
-      return <div>delete</div>;
+      return <DeleteDeviceFlow />;
     default:
       return null;
   }
