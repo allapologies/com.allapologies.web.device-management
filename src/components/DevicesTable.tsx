@@ -6,6 +6,15 @@ import {
 } from '@tanstack/react-table';
 import { Device } from '../domain/Device.ts';
 import { devices } from './mocks.ts';
+import {
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow
+} from '@mui/material';
 
 const columnHelper = createColumnHelper<Device>();
 
@@ -37,25 +46,25 @@ export const DevicesTable = () => {
   })
 
   return (
-    <div className="p-2">
-      <table>
-        <thead>
+    <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 600 }}>
+        <TableHead>
         {table.getHeaderGroups().map(headerGroup => (
-          <tr key={headerGroup.id}>
+          <TableRow key={headerGroup.id}>
             {headerGroup.headers.map(header => (
-              <th key={header.id}>
+              <TableCell key={header.id}>
                 {header.isPlaceholder
                   ? null
                   : flexRender(
                     header.column.columnDef.header,
                     header.getContext()
                   )}
-              </th>
+              </TableCell>
             ))}
-          </tr>
+          </TableRow>
         ))}
-        </thead>
-        <tbody>
+        </TableHead>
+        <TableBody>
         {table.getRowModel().rows.map(row => (
           <tr key={row.id}>
             {row.getVisibleCells().map(cell => (
@@ -65,25 +74,8 @@ export const DevicesTable = () => {
             ))}
           </tr>
         ))}
-        </tbody>
-        <tfoot>
-        {table.getFooterGroups().map(footerGroup => (
-          <tr key={footerGroup.id}>
-            {footerGroup.headers.map(header => (
-              <th key={header.id}>
-                {header.isPlaceholder
-                  ? null
-                  : flexRender(
-                    header.column.columnDef.footer,
-                    header.getContext()
-                  )}
-              </th>
-            ))}
-          </tr>
-        ))}
-        </tfoot>
-      </table>
-      <div className="h-4" />
-    </div>
+        </TableBody>
+      </Table>
+    </TableContainer>
   )
 };
