@@ -5,7 +5,6 @@ import {
   flexRender
 } from '@tanstack/react-table';
 import { Device } from '../domain/Device.ts';
-import { devices } from './mocks.ts';
 import {
   Paper,
   Table,
@@ -17,6 +16,7 @@ import {
 } from '@mui/material';
 
 import { RowActions } from './RowActions.tsx';
+import { useDevices } from '../service/useDevices.ts';
 
 const columnHelper = createColumnHelper<Device>();
 
@@ -41,6 +41,7 @@ const columns = [
 
 
 export const DevicesTable = () => {
+  const { devices } = useDevices();
   const table = useReactTable({
     data: devices,
     columns,
@@ -51,31 +52,31 @@ export const DevicesTable = () => {
     <TableContainer component={Paper}>
       <Table>
         <TableHead>
-        {table.getHeaderGroups().map(headerGroup => (
-          <TableRow key={headerGroup.id}>
-            {headerGroup.headers.map(header => (
-              <TableCell key={header.id}>
-                {header.isPlaceholder
-                  ? null
-                  : flexRender(
-                    header.column.columnDef.header,
-                    header.getContext()
-                  )}
-              </TableCell>
-            ))}
-          </TableRow>
-        ))}
+          {table.getHeaderGroups().map(headerGroup => (
+            <TableRow key={headerGroup.id}>
+              {headerGroup.headers.map(header => (
+                <TableCell key={header.id}>
+                  {header.isPlaceholder
+                    ? null
+                    : flexRender(
+                      header.column.columnDef.header,
+                      header.getContext()
+                    )}
+                </TableCell>
+              ))}
+            </TableRow>
+          ))}
         </TableHead>
         <TableBody>
-        {table.getRowModel().rows.map(row => (
-          <tr key={row.id}>
-            {row.getVisibleCells().map(cell => (
-              <td key={cell.id}>
-                {flexRender(cell.column.columnDef.cell, cell.getContext())}
-              </td>
-            ))}
-          </tr>
-        ))}
+          {table.getRowModel().rows.map(row => (
+            <tr key={row.id}>
+              {row.getVisibleCells().map(cell => (
+                <td key={cell.id}>
+                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                </td>
+              ))}
+            </tr>
+          ))}
         </TableBody>
       </Table>
     </TableContainer>
