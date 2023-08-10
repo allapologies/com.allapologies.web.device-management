@@ -4,7 +4,7 @@ import { Dialog as MuiDialog, DialogActions, DialogContent, DialogTitle, } from 
 type Props = {
   title: string;
   content: ReactNode;
-  actions: ReactNode;
+  actions?: ReactNode;
 };
 
 export const Dialog = (props: Props) => {
