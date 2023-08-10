@@ -1,13 +1,15 @@
 import { Device } from '../domain/Device.ts';
 import { CreateDeviceDTO } from './dto/CreateDeviceDTO.ts';
+import { GetDevicesDTO } from './dto/GetDevicesDTO.ts';
 
-const url = '/devices';
+const url = 'http://localhost:4000/devices';
 
 export const getDevices = async (): Promise<Device[]> => {
   const res = await fetch(url, {
     method: 'GET',
   })
-  return res.json();
+  const devicesResponse = await res.json() as GetDevicesDTO;
+  return devicesResponse.devices;
 };
 
 export const createDevice = async (device: CreateDeviceDTO): Promise<Device> => {
