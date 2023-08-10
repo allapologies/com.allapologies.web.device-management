@@ -76,5 +76,5 @@ export const useFlowControllerDispatch = () => {
 }
 
 export const useFlowController = () => {
-  return [useFlowControllerState(), useFlowControllerDispatch()];
+  return [useFlowControllerState(), useFlowControllerDispatch()] as const;
 };
