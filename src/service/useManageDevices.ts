@@ -1,25 +1,26 @@
-import { useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-import { createDevice, updateDevice, deleteDevice } from './devices.ts';
-import { CreateDeviceDTO } from './dto/CreateDeviceDTO.ts';
-import { DeviceDTO } from './dto/DeviceDTO.ts';
+import * as apiService from './devices.ts';
 import { QUERIES } from './constants.ts';
 
 export const useManageDevices = () => {
   const queryClient = useQueryClient();
 
+  const createDevice = useMutation(apiService.createDevice, {
+    onSuccess: () => queryClient.invalidateQueries([QUERIES.DEVICES]),
+  });
+
+  const updateDevice = useMutation(apiService.updateDevice, {
+    onSuccess: () => queryClient.invalidateQueries([QUERIES.DEVICES]),
+  });
+
+  const deleteDevice = useMutation(apiService.deleteDevice, {
+    onSuccess: () => queryClient.invalidateQueries([QUERIES.DEVICES]),
+  });
+
   return {
-    createDevice: async (device: CreateDeviceDTO) => {
-      await createDevice(device);
-      await queryClient.invalidateQueries([QUERIES.DEVICES]);
-    },
-    updateDevice: async (device: DeviceDTO) => {
-      await updateDevice(device);
-      await queryClient.invalidateQueries([QUERIES.DEVICES]);
-    },
-    deleteDevice: async (id: string) => {
-      await deleteDevice(id);
-      await queryClient.invalidateQueries([QUERIES.DEVICES]);
-    }
+    createDevice,
+    updateDevice,
+    deleteDevice,
   };
 };

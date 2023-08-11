@@ -8,15 +8,11 @@ import { formValuesToDTO } from './mappers.ts';
 
 export const NewDeviceFlow = () => {
   const dispatch = useFlowControllerDispatch();
-  const { createDevice } = useManageDevices();
+  const { createDevice: { mutateAsync, error, isLoading } } = useManageDevices();
 
   const onCreateDevice = async (values: FormValues) => {
-      try {
-        await createDevice(formValuesToDTO(values));
-        dispatch(dismiss());
-      } catch (error) {
-        console.log('handle error');
-      }
+      await mutateAsync(formValuesToDTO(values));
+      dispatch(dismiss());
   };
 
   return (
@@ -36,6 +32,7 @@ export const NewDeviceFlow = () => {
                 type="submit"
                 variant="contained"
                 startIcon={<Save />}
+                disabled={isLoading}
               >
                 save
               </Button>

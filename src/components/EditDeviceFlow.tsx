@@ -11,7 +11,7 @@ import { DeviceDTO } from '../service/dto/DeviceDTO.ts';
 export const EditDeviceFlow = () => {
   const [{ selectedDeviceId }, dispatch] = useFlowController();
   const { devices } = useDevices();
-  const { updateDevice } = useManageDevices();
+  const { updateDevice: { mutateAsync, error, isLoading } } = useManageDevices();
 
   if (!selectedDeviceId) {
     throw new Error('Selected device id not found');
@@ -26,16 +26,12 @@ export const EditDeviceFlow = () => {
   const initialValues: FormValues = dtoToFormValues(selectedDevice);
 
   const onSubmitForm = async (values: FormValues) => {
-    try {
-      const dto: DeviceDTO = {
-        ...formValuesToDTO(values),
-        id: selectedDevice.id,
-      };
-      await updateDevice(dto);
-      dispatch(dismiss());
-    } catch (error) {
-      console.log('handle error');
-    }
+    const dto: DeviceDTO = {
+      ...formValuesToDTO(values),
+      id: selectedDevice.id,
+    };
+    await mutateAsync(dto);
+    dispatch(dismiss());
   };
 
   return (
@@ -56,6 +52,7 @@ export const EditDeviceFlow = () => {
                 type="submit"
                 variant="contained"
                 startIcon={<Save />}
+                disabled={isLoading}
               >
                 save
               </Button>

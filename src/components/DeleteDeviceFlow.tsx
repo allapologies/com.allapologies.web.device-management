@@ -7,19 +7,15 @@ import { Delete } from '@mui/icons-material';
 
 export const DeleteDeviceFlow = () => {
   const [{ selectedDeviceId }, dispatch] = useFlowController();
-  const { deleteDevice } = useManageDevices();
+  const { deleteDevice: { mutateAsync, error, isLoading } } = useManageDevices();
 
   if (!selectedDeviceId) {
     throw new Error('Selected device id not found');
   }
 
   const onDeleteConfirm = async () => {
-    try {
-      await deleteDevice(selectedDeviceId);
-      dispatch(dismiss());
-    } catch (error) {
-      console.log('handle error');
-    }
+    await mutateAsync(selectedDeviceId);
+    dispatch(dismiss());
   };
 
   return (
@@ -38,6 +34,7 @@ export const DeleteDeviceFlow = () => {
             variant="contained"
             startIcon={<Delete />}
             onClick={onDeleteConfirm}
+            disabled={isLoading}
           >
             delete
           </Button>
