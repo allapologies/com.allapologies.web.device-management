@@ -69,13 +69,13 @@ export const DevicesTable = () => {
         </TableHead>
         <TableBody>
           {table.getRowModel().rows.map(row => (
-            <tr key={row.id}>
+            <TableRow key={row.id}>
               {row.getVisibleCells().map(cell => (
-                <td key={cell.id}>
+                <TableCell key={cell.id}>
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </td>
+                </TableCell>
               ))}
-            </tr>
+            </TableRow>
           ))}
         </TableBody>
       </Table>
