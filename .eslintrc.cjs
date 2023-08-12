@@ -6,6 +6,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
     'airbnb',
+    'airbnb-typescript',
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
@@ -15,5 +16,11 @@ module.exports = {
       'warn',
       {allowConstantExport: true},
     ],
+    'react/react-in-jsx-scope': 'off',
+    'import/prefer-default-export': 'off',
+    'react/require-default-props': false,
   },
+  parserOptions: {
+    project: './tsconfig.json',
+  }
 }
