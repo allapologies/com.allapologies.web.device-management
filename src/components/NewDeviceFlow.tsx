@@ -1,18 +1,19 @@
 import { Dialog } from './Dialog.tsx';
 import { DeviceForm, FormValues } from './DeviceForm.tsx';
-import { Button } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import { dismiss, useFlowControllerDispatch } from './FlowController.tsx';
 import { Save } from '@mui/icons-material';
 import { useManageDevices } from '../service/useManageDevices.ts';
 import { formValuesToDTO } from './mappers.ts';
+import { LineError } from './LineError.tsx';
 
 export const NewDeviceFlow = () => {
   const dispatch = useFlowControllerDispatch();
   const { createDevice: { mutateAsync, error, isLoading } } = useManageDevices();
 
   const onCreateDevice = async (values: FormValues) => {
-      await mutateAsync(formValuesToDTO(values));
-      dispatch(dismiss());
+    await mutateAsync(formValuesToDTO(values));
+    dispatch(dismiss());
   };
 
   return (
@@ -23,6 +24,7 @@ export const NewDeviceFlow = () => {
           onSubmit={onCreateDevice}
           actions={(
             <>
+              <LineError error={error ? error.toString() : ''} />
               <Button
                 onClick={() => dispatch(dismiss())}
               >

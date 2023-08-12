@@ -4,6 +4,7 @@ import { useManageDevices } from '../service/useManageDevices.ts';
 import { Dialog } from './Dialog.tsx';
 import { Button, DialogActions, DialogContent, DialogContentText } from '@mui/material';
 import { Delete } from '@mui/icons-material';
+import { LineError } from './LineError.tsx';
 
 export const DeleteDeviceFlow = () => {
   const [{ selectedDeviceId }, dispatch] = useFlowController();
@@ -29,6 +30,7 @@ export const DeleteDeviceFlow = () => {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
+            <LineError error={error ? error.toString() : ''} />
             <Button onClick={() => dispatch(dismiss())}>
               dismiss
             </Button>

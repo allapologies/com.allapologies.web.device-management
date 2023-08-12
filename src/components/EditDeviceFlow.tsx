@@ -7,6 +7,7 @@ import { Button } from '@mui/material';
 import { Save } from '@mui/icons-material';
 import { useDevices } from '../service/useDevices.ts';
 import { DeviceDTO } from '../service/dto/DeviceDTO.ts';
+import { LineError } from './LineError.tsx';
 
 export const EditDeviceFlow = () => {
   const [{ selectedDeviceId }, dispatch] = useFlowController();
@@ -43,6 +44,7 @@ export const EditDeviceFlow = () => {
           initialValues={initialValues}
           actions={(
             <>
+              <LineError error={error ? error.toString() : ''} />
               <Button
                 onClick={() => dispatch(dismiss())}
               >
