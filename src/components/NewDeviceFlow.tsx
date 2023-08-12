@@ -40,10 +40,6 @@ export const NewDeviceFlow = () => {
           )}
         />
       )}
-      actions={(
-        <>
-        </>
-      )}
     />
   )
 };

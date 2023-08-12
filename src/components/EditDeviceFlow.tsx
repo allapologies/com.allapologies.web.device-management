@@ -60,10 +60,6 @@ export const EditDeviceFlow = () => {
           )}
         />
       )}
-      actions={(
-        <>
-        </>
-      )}
     />
   )
 };

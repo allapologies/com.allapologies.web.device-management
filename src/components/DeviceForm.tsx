@@ -1,4 +1,4 @@
-import { MenuItem, Select, Stack, TextField } from '@mui/material';
+import { DialogActions, DialogContent, MenuItem, Select, Stack, TextField } from '@mui/material';
 import { FormEventHandler, ReactNode } from 'react';
 
 export type FormValues = {
@@ -35,52 +35,57 @@ export const DeviceForm = (props: Props) => {
   };
   return (
     <form onSubmit={handleSubmit}>
-      <Stack gap={1}>
-        <TextField
-          label="name"
-          name="name"
-          variant="standard"
-          required
-          defaultValue={initialValues?.name?? ''}
-        />
-        <Select
-          label="type"
-          name="type"
-          variant="standard"
-          required
-          defaultValue={initialValues?.type?? ''}
-        >
-          {deviceOptions.map((option) => (
-            <MenuItem key={option} value={option}>
-              {option}
-            </MenuItem>
-          ))}
-        </Select>
-        <TextField
-          label="owner"
-          name="owner"
-          variant="standard"
-          required
-          defaultValue={initialValues?.owner?? ''}
-        />
-        <TextField
-          label="battery"
-          name="batteryStatus"
-          type="number"
-          variant="standard"
-          required
-          defaultValue={initialValues?.batteryStatus?? 0}
-          InputProps={{
-            inputProps: {
-              min: 0,
-              max: 100,
-              step: 1,
-            },
-            endAdornment: ' %',
-          }}
-        />
-      </Stack>
-      {actions}
+      <DialogContent>
+        <Stack gap={2}>
+          <TextField
+            label="Name"
+            name="name"
+            variant="standard"
+            required
+            defaultValue={initialValues?.name ?? ''}
+          />
+          <TextField
+            select
+            label="Type"
+            name="type"
+            variant="standard"
+            required
+            defaultValue={initialValues?.type ?? ''}
+          >
+            {deviceOptions.map((option) => (
+              <MenuItem key={option} value={option}>
+                {option}
+              </MenuItem>
+            ))}
+          </TextField>
+          <TextField
+            label="Owner"
+            name="owner"
+            variant="standard"
+            required
+            defaultValue={initialValues?.owner ?? ''}
+          />
+          <TextField
+            label="Battery status"
+            name="batteryStatus"
+            type="number"
+            variant="standard"
+            required
+            defaultValue={initialValues?.batteryStatus ?? 0}
+            InputProps={{
+              inputProps: {
+                min: 0,
+                max: 100,
+                step: 1,
+              },
+              endAdornment: ' %',
+            }}
+          />
+        </Stack>
+      </DialogContent>
+      <DialogActions>
+        {actions}
+      </DialogActions>
     </form>
   );
 };
