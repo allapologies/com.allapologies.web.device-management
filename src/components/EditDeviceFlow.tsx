@@ -1,4 +1,4 @@
-import { dismiss, useFlowController } from './FlowController.tsx';
+import { dismiss, useFlowController } from './flows';
 import { useManageDevices } from '../service/useManageDevices.ts';
 import { DeviceForm, FormValues } from './DeviceForm.tsx';
 import { dtoToFormValues, formValuesToDTO } from './mappers.ts';

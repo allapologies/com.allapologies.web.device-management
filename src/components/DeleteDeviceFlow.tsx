@@ -1,4 +1,4 @@
-import { dismiss, useFlowController } from './FlowController.tsx';
+import { dismiss, useFlowController } from './flows';
 import { useManageDevices } from '../service/useManageDevices.ts';
 
 import { Dialog } from './Dialog.tsx';

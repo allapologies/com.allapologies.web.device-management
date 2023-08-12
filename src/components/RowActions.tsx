@@ -3,7 +3,7 @@ import { IconButton } from '@mui/material';
 import { Edit, Delete } from '@mui/icons-material';
 
 import { Device } from '../domain/Device.ts';
-import { deleteDevice, editDevice, useFlowControllerDispatch } from './FlowController.tsx';
+import { deleteDevice, editDevice, useFlowControllerDispatch } from './flows';
 
 
 export const RowActions = (props: CellContext<Device, unknown>) => {

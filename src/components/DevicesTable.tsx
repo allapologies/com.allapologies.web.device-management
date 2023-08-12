@@ -63,8 +63,6 @@ export const DevicesTable = () => {
     onSortingChange: setSorting,
   });
 
-  console.log(isLoading);
-
   return (
     <TableContainer component={Paper}>
       <Table>

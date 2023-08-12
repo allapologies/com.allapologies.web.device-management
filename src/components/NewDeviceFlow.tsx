@@ -1,7 +1,7 @@
 import { Dialog } from './Dialog.tsx';
 import { DeviceForm, FormValues } from './DeviceForm.tsx';
 import { Button } from '@mui/material';
-import { dismiss, useFlowControllerDispatch } from './FlowController.tsx';
+import { dismiss, useFlowControllerDispatch } from './flows';
 import { Save } from '@mui/icons-material';
 import { useManageDevices } from '../service/useManageDevices.ts';
 import { formValuesToDTO } from './mappers.ts';

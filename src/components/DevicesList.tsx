@@ -2,7 +2,7 @@ import { DevicesTable } from './DevicesTable.tsx';
 import { Button } from '@mui/material';
 import { Add } from '@mui/icons-material';
 
-import { createDevice, useFlowControllerDispatch } from './FlowController.tsx';
+import { createDevice, useFlowControllerDispatch } from './flows';
 
 export const DevicesList = () => {
   const dispatch = useFlowControllerDispatch();

@@ -1,4 +1,4 @@
-import { FLOWS, useFlowControllerState } from './FlowController.tsx';
+import { FLOWS, useFlowControllerState } from './flows';
 import { NewDeviceFlow } from './NewDeviceFlow.tsx';
 import { EditDeviceFlow } from './EditDeviceFlow.tsx';
 import { DeleteDeviceFlow } from './DeleteDeviceFlow.tsx';
