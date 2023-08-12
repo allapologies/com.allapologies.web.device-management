@@ -1,37 +1,25 @@
+import axios from 'axios';
+
 import { Device } from '../domain/Device.ts';
 import { CreateDeviceDTO } from './dto/CreateDeviceDTO.ts';
 import { GetDevicesDTO } from './dto/GetDevicesDTO.ts';
+import { DeviceDTO } from './dto/DeviceDTO.ts';
 
 const url = 'http://localhost:4000/devices';
 
 export const getDevices = async (): Promise<Device[]> => {
-  const res = await fetch(url, {
-    method: 'GET',
-  })
-  const devicesResponse = await res.json() as GetDevicesDTO;
-  return devicesResponse.devices;
+  const res = await axios.get<GetDevicesDTO>(url);
+  return res.data.devices;
 };
 
 export const createDevice = async (device: CreateDeviceDTO): Promise<Device> => {
-  const res = await fetch(url, {
-    method: 'POST',
-    body: JSON.stringify(device),
-    headers: { 'Content-Type': 'application/json' },
-  })
-  return res.json();
+  const res = await axios.post<DeviceDTO>(url, device)
+  return res.data;
 }
 
 export const updateDevice = async (device: Device): Promise<Device> => {
-  const res = await fetch(`${url}/${device.id}`, {
-    method: 'PUT',
-    body: JSON.stringify(device),
-    headers: { 'Content-Type': 'application/json' },
-  })
-  return res.json();
+  const res = await axios.put(`${url}/${device.id}`, device)
+  return res.data;
 };
 
-export const deleteDevice = async (id: string): Promise<void> => {
-  await fetch(`${url}/${id}`, {
-    method: 'DELETE',
-  })
-};
+export const deleteDevice = (id: string): Promise<void> => axios.delete(`${url}/${id}`);

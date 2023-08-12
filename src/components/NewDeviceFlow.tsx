@@ -1,6 +1,6 @@
 import { Dialog } from './Dialog.tsx';
 import { DeviceForm, FormValues } from './DeviceForm.tsx';
-import { Box, Button } from '@mui/material';
+import { Button } from '@mui/material';
 import { dismiss, useFlowControllerDispatch } from './FlowController.tsx';
 import { Save } from '@mui/icons-material';
 import { useManageDevices } from '../service/useManageDevices.ts';
