@@ -1,7 +1,11 @@
-import { useReducer, FC, ReactNode } from 'react';
+import { useReducer, ReactNode } from 'react';
 import { reducer, FlowControllerDispatchContext, FlowControllerStateContext } from './ducks';
 
-export const FlowProvider: FC<{ children: ReactNode }> = ({ children }) => {
+type Props = {
+  children: ReactNode;
+};
+
+export function FlowProvider({ children }: Props) {
   const [state, dispatch] = useReducer(reducer, { flow: null, selectedDeviceId: null });
 
   return (
@@ -11,4 +15,4 @@ export const FlowProvider: FC<{ children: ReactNode }> = ({ children }) => {
       </FlowControllerDispatchContext.Provider>
     </FlowControllerStateContext.Provider>
   );
-};
+}

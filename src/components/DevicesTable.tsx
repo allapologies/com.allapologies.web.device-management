@@ -36,6 +36,8 @@ const columns = [
   }),
   columnHelper.display({
     id: 'actions',
+    // custom component requires all props to be utilized
+    // eslint-disable-next-line react/jsx-props-no-spreading
     cell: (props) => <RowActions {...props} />,
   }),
 ];
@@ -71,6 +73,8 @@ export function DevicesTable() {
               {headerGroup.headers.map((header) => (
                 <TableCell key={header.id}>
                   {header.isPlaceholder ? null : (
+                    // component is interactive and has a handler
+                    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
                     <div
                       {...{
                         className: header.column.getCanSort()

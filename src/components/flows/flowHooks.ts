@@ -17,4 +17,7 @@ export const useFlowControllerDispatch = () => {
   return context;
 };
 
-export const useFlowController = () => [useFlowControllerState(), useFlowControllerDispatch()] as const;
+export const useFlowController = () => [
+  useFlowControllerState(),
+  useFlowControllerDispatch(),
+] as const;

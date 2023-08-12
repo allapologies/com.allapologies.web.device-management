@@ -7,17 +7,18 @@ import { deleteDevice, editDevice, useFlowControllerDispatch } from './flows';
 
 export function RowActions(props: CellContext<Device, unknown>) {
   const dispatch = useFlowControllerDispatch();
+  const { row: { original: { id } } } = props;
   return (
     <div>
       <IconButton
         title="edit"
-        onClick={() => dispatch(editDevice(props.row.original.id))}
+        onClick={() => dispatch(editDevice(id))}
       >
         <Edit />
       </IconButton>
       <IconButton
         title="delete"
-        onClick={() => dispatch(deleteDevice(props.row.original.id))}
+        onClick={() => dispatch(deleteDevice(id))}
       >
         <Delete />
       </IconButton>

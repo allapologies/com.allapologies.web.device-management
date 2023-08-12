@@ -44,5 +44,9 @@ export const reducer = (state: State, action: Actions): State => {
   }
 };
 
-export const FlowControllerStateContext = createContext<State | undefined>(undefined);
-export const FlowControllerDispatchContext = createContext<Dispatch<Actions> | undefined>(undefined);
+export const FlowControllerStateContext = createContext<State | undefined>(
+  undefined,
+);
+export const FlowControllerDispatchContext = createContext<Dispatch<Actions> | undefined>(
+  undefined,
+);
