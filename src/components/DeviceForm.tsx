@@ -25,14 +25,15 @@ type Props = {
 export const DeviceForm = (props: Props) => {
   const { onSubmit, actions, initialValues } = props;
 
-  const handleSubmit: FormEventHandler = (event) => {
+  const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
+    const form = event.target as HTMLFormElement;
 
-    const form = event.target;
-    const formData = new FormData(form);
-    const formJson = Object.fromEntries(formData.entries());
-    onSubmit(formJson as unknown as FormValues);
+    const values = Object
+      .fromEntries(new FormData(form).entries()) as FormValues;
+    onSubmit(values);
   };
+
   return (
     <form onSubmit={handleSubmit}>
       <DialogContent>
