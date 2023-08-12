@@ -6,7 +6,6 @@ import {
   SortingState, getSortedRowModel,
 } from '@tanstack/react-table';
 import {
-  Paper,
   Table,
   TableBody,
   TableCell,
@@ -64,8 +63,8 @@ export const DevicesTable = () => {
   });
 
   return (
-    <TableContainer component={Paper}>
-      <Table>
+    <TableContainer sx={{ maxHeight: "calc(100vh - 60px)" }}>
+      <Table stickyHeader>
         <TableHead>
           {table.getHeaderGroups().map(headerGroup => (
             <TableRow key={headerGroup.id}>
