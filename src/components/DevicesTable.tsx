@@ -49,7 +49,7 @@ const initialSorting: SortingState = [
 ];
 
 export const DevicesTable = () => {
-  const { devices } = useDevices();
+  const { devices, error, isLoading } = useDevices();
   const [sorting, setSorting] = useState(initialSorting)
 
   const table = useReactTable({
@@ -62,6 +62,8 @@ export const DevicesTable = () => {
     },
     onSortingChange: setSorting,
   });
+
+  console.log(isLoading);
 
   return (
     <TableContainer component={Paper}>
@@ -96,6 +98,20 @@ export const DevicesTable = () => {
           ))}
         </TableHead>
         <TableBody>
+          {error ? (
+            <TableRow>
+              <TableCell colSpan={columns.length} sx={{ textAlign: 'center', color: 'error.main' }}>
+                {error.toString()}
+              </TableCell>
+            </TableRow>
+          ) : null}
+          {isLoading ? (
+            <TableRow>
+              <TableCell colSpan={columns.length} sx={{ textAlign: 'center' }}>
+                ...loading...
+              </TableCell>
+            </TableRow>
+          ) : null}
           {table.getRowModel().rows.map(row => (
             <TableRow key={row.id}>
               {row.getVisibleCells().map(cell => (
