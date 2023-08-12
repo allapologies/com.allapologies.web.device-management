@@ -1,10 +1,10 @@
 import { Button, DialogActions } from '@mui/material';
 import { Delete } from '@mui/icons-material';
+
 import { dismiss, useFlowController } from './flows';
 import { useManageDevices } from '../service/useManageDevices';
-
-import { Dialog } from './Dialog';
-import { LineError } from './LineError';
+import { Dialog } from './common/Dialog';
+import { LineError } from './common/LineError';
 
 export function DeleteDeviceFlow() {
   const [{ selectedDeviceId }, dispatch] = useFlowController();

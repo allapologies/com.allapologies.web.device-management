@@ -1,13 +1,14 @@
 import { Button } from '@mui/material';
 import { Save } from '@mui/icons-material';
+
 import { dismiss, useFlowController } from './flows';
 import { useManageDevices } from '../service/useManageDevices';
 import { DeviceForm, FormValues } from './DeviceForm';
 import { dtoToFormValues, formValuesToDTO } from './mappers';
-import { Dialog } from './Dialog';
+import { Dialog } from './common/Dialog';
 import { useDevices } from '../service/useDevices';
 import { DeviceDTO } from '../service/dto/DeviceDTO';
-import { LineError } from './LineError';
+import { LineError } from './common/LineError';
 
 export function EditDeviceFlow() {
   const [{ selectedDeviceId }, dispatch] = useFlowController();

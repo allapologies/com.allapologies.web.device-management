@@ -1,24 +1,26 @@
-import { CellContext } from '@tanstack/react-table';
 import { IconButton } from '@mui/material';
 import { Edit, Delete } from '@mui/icons-material';
 
-import { Device } from '../domain/Device';
 import { deleteDevice, editDevice, useFlowControllerDispatch } from './flows';
 
-export function RowActions(props: CellContext<Device, unknown>) {
+type Props = {
+  deviceId: string;
+};
+
+export function RowActions(props: Props) {
   const dispatch = useFlowControllerDispatch();
-  const { row: { original: { id } } } = props;
+  const { deviceId } = props;
   return (
     <div>
       <IconButton
         title="edit"
-        onClick={() => dispatch(editDevice(id))}
+        onClick={() => dispatch(editDevice(deviceId))}
       >
         <Edit />
       </IconButton>
       <IconButton
         title="delete"
-        onClick={() => dispatch(deleteDevice(id))}
+        onClick={() => dispatch(deleteDevice(deviceId))}
       >
         <Delete />
       </IconButton>

@@ -36,9 +36,7 @@ const columns = [
   }),
   columnHelper.display({
     id: 'actions',
-    // custom component requires all props to be utilized
-    // eslint-disable-next-line react/jsx-props-no-spreading
-    cell: (props) => <RowActions {...props} />,
+    cell: ({ row: { original: { id } } }) => <RowActions deviceId={id} />,
   }),
 ];
 

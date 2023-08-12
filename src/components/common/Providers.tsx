@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { DataFetchProvider } from './DataFetchProvider';
-import { FlowProvider } from './flows';
+import { FlowProvider } from '../flows';
 
 type Props = {
   children: ReactNode;

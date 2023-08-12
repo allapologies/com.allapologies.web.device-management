@@ -1,4 +1,4 @@
-import { Providers } from './components/Providers';
+import { Providers } from './components/common/Providers';
 import { DevicesList } from './components/DevicesList';
 import { FlowRenderer } from './components/FlowRenderer';
 
