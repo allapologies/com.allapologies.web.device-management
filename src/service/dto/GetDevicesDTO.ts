@@ -1,4 +1,4 @@
-import { DeviceDTO } from './DeviceDTO.ts';
+import { DeviceDTO } from './DeviceDTO';
 
 export type GetDevicesDTO = {
   devices: DeviceDTO[];

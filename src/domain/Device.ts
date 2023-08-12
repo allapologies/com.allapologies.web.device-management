@@ -4,4 +4,4 @@ export type Device = {
   type: string;
   owner: string;
   batteryStatus: number;
-}
+};

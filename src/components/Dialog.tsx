@@ -1,12 +1,12 @@
 import { ReactNode } from 'react';
-import { Dialog as MuiDialog, DialogTitle, } from '@mui/material';
+import { Dialog as MuiDialog, DialogTitle } from '@mui/material';
 
 type Props = {
   title: string;
   content: ReactNode;
 };
 
-export const Dialog = (props: Props) => {
+export function Dialog(props: Props) {
   const {
     title,
     content,

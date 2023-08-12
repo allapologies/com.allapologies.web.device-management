@@ -1,12 +1,12 @@
-import { dismiss, useFlowController } from './flows';
-import { useManageDevices } from '../service/useManageDevices.ts';
-
-import { Dialog } from './Dialog.tsx';
 import { Button, DialogActions } from '@mui/material';
 import { Delete } from '@mui/icons-material';
-import { LineError } from './LineError.tsx';
+import { dismiss, useFlowController } from './flows';
+import { useManageDevices } from '../service/useManageDevices';
 
-export const DeleteDeviceFlow = () => {
+import { Dialog } from './Dialog';
+import { LineError } from './LineError';
+
+export function DeleteDeviceFlow() {
   const [{ selectedDeviceId }, dispatch] = useFlowController();
   const { deleteDevice: { mutateAsync, error, isLoading } } = useManageDevices();
 
@@ -22,25 +22,23 @@ export const DeleteDeviceFlow = () => {
   return (
     <Dialog
       title="Delete device?"
-      content={
-        <>
-          <DialogActions>
-            <LineError error={error ? error.toString() : ''} />
-            <Button onClick={() => dispatch(dismiss())}>
-              dismiss
-            </Button>
-            <Button
-              type="button"
-              variant="contained"
-              startIcon={<Delete />}
-              onClick={onDeleteConfirm}
-              disabled={isLoading}
-            >
-              delete
-            </Button>
-          </DialogActions>
-        </>
-      }
+      content={(
+        <DialogActions>
+          <LineError error={error ? error.toString() : ''} />
+          <Button onClick={() => dispatch(dismiss())}>
+            dismiss
+          </Button>
+          <Button
+            type="button"
+            variant="contained"
+            startIcon={<Delete />}
+            onClick={onDeleteConfirm}
+            disabled={isLoading}
+          >
+            delete
+          </Button>
+        </DialogActions>
+      )}
     />
-  )
-};
+  );
+}

@@ -1,21 +1,17 @@
-import { FormValues } from './DeviceForm.tsx';
-import { CreateDeviceDTO } from '../service/dto/CreateDeviceDTO.ts';
-import { DeviceDTO } from '../service/dto/DeviceDTO.ts';
+import { FormValues } from './DeviceForm';
+import { CreateDeviceDTO } from '../service/dto/CreateDeviceDTO';
+import { DeviceDTO } from '../service/dto/DeviceDTO';
 
-export const formValuesToDTO = (values: FormValues): CreateDeviceDTO => {
-  return {
-    name: values.name,
-    type: values.type,
-    owner: values.owner,
-    batteryStatus: parseInt(values.batteryStatus, 10),
-  }
-};
+export const formValuesToDTO = (values: FormValues): CreateDeviceDTO => ({
+  name: values.name,
+  type: values.type,
+  owner: values.owner,
+  batteryStatus: parseInt(values.batteryStatus, 10),
+});
 
-export const dtoToFormValues = (dto: DeviceDTO): FormValues => {
-  return {
-    name: dto.name,
-    type: dto.type,
-    owner: dto.owner,
-    batteryStatus: dto.batteryStatus.toString(),
-  }
-};
+export const dtoToFormValues = (dto: DeviceDTO): FormValues => ({
+  name: dto.name,
+  type: dto.type,
+  owner: dto.owner,
+  batteryStatus: dto.batteryStatus.toString(),
+});

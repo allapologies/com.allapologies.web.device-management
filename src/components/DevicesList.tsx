@@ -1,10 +1,10 @@
-import { DevicesTable } from './DevicesTable.tsx';
 import { Button, Paper } from '@mui/material';
 import { Add } from '@mui/icons-material';
+import { DevicesTable } from './DevicesTable';
 
 import { createDevice, useFlowControllerDispatch } from './flows';
 
-export const DevicesList = () => {
+export function DevicesList() {
   const dispatch = useFlowControllerDispatch();
   return (
     <div>
@@ -23,4 +23,4 @@ export const DevicesList = () => {
       </Button>
     </div>
   );
-};
+}

@@ -4,8 +4,10 @@ type Props = {
   error?: string;
 };
 
-export const LineError = ({ error }: Props) => (
-  <Typography variant="body1" sx={{ color: 'error.main' }} noWrap>
-    {error}
-  </Typography>
-);
+export function LineError({ error }: Props) {
+  return (
+    <Typography variant="body1" sx={{ color: 'error.main' }} noWrap>
+      {error}
+    </Typography>
+  );
+}

@@ -4,4 +4,4 @@ export type DeviceDTO = {
   type: string;
   owner: string;
   batteryStatus: number;
-}
+};

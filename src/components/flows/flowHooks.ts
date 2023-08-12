@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { FlowControllerDispatchContext, FlowControllerStateContext } from './ducks.ts';
+import { FlowControllerDispatchContext, FlowControllerStateContext } from './ducks';
 
 export const useFlowControllerState = () => {
   const context = useContext(FlowControllerStateContext);
@@ -15,8 +15,6 @@ export const useFlowControllerDispatch = () => {
     throw new Error('useFlowControllerDispatch must be used within a FlowControllerProvider');
   }
   return context;
-}
-
-export const useFlowController = () => {
-  return [useFlowControllerState(), useFlowControllerDispatch()] as const;
 };
+
+export const useFlowController = () => [useFlowControllerState(), useFlowControllerDispatch()] as const;

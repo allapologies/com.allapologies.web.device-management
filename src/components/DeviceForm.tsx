@@ -1,4 +1,6 @@
-import { DialogActions, DialogContent, MenuItem, Stack, TextField } from '@mui/material';
+import {
+  DialogActions, DialogContent, MenuItem, Stack, TextField,
+} from '@mui/material';
 import { FormEventHandler, ReactNode } from 'react';
 
 export type FormValues = {
@@ -14,7 +16,7 @@ const deviceOptions = [
   'laptop',
   'desktop',
   'smartwatch',
-]
+];
 
 type Props = {
   onSubmit: (values: FormValues) => void;
@@ -22,7 +24,7 @@ type Props = {
   initialValues?: FormValues;
 };
 
-export const DeviceForm = (props: Props) => {
+export function DeviceForm(props: Props) {
   const { onSubmit, actions, initialValues } = props;
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
@@ -89,4 +91,4 @@ export const DeviceForm = (props: Props) => {
       </DialogActions>
     </form>
   );
-};
+}

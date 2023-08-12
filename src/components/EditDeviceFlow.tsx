@@ -1,15 +1,15 @@
-import { dismiss, useFlowController } from './flows';
-import { useManageDevices } from '../service/useManageDevices.ts';
-import { DeviceForm, FormValues } from './DeviceForm.tsx';
-import { dtoToFormValues, formValuesToDTO } from './mappers.ts';
-import { Dialog } from './Dialog.tsx';
 import { Button } from '@mui/material';
 import { Save } from '@mui/icons-material';
-import { useDevices } from '../service/useDevices.ts';
-import { DeviceDTO } from '../service/dto/DeviceDTO.ts';
-import { LineError } from './LineError.tsx';
+import { dismiss, useFlowController } from './flows';
+import { useManageDevices } from '../service/useManageDevices';
+import { DeviceForm, FormValues } from './DeviceForm';
+import { dtoToFormValues, formValuesToDTO } from './mappers';
+import { Dialog } from './Dialog';
+import { useDevices } from '../service/useDevices';
+import { DeviceDTO } from '../service/dto/DeviceDTO';
+import { LineError } from './LineError';
 
-export const EditDeviceFlow = () => {
+export function EditDeviceFlow() {
   const [{ selectedDeviceId }, dispatch] = useFlowController();
   const { devices } = useDevices();
   const { updateDevice: { mutateAsync, error, isLoading } } = useManageDevices();
@@ -63,5 +63,5 @@ export const EditDeviceFlow = () => {
         />
       )}
     />
-  )
-};
+  );
+}

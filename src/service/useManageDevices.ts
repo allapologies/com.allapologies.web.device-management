@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-import * as apiService from './devices.ts';
-import { QUERIES } from './constants.ts';
+import * as apiService from './devices';
+import { QUERIES } from './constants';
 
 export const useManageDevices = () => {
   const queryClient = useQueryClient();

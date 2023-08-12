@@ -1,9 +1,9 @@
 import { FLOWS, useFlowControllerState } from './flows';
-import { NewDeviceFlow } from './NewDeviceFlow.tsx';
-import { EditDeviceFlow } from './EditDeviceFlow.tsx';
-import { DeleteDeviceFlow } from './DeleteDeviceFlow.tsx';
+import { NewDeviceFlow } from './NewDeviceFlow';
+import { EditDeviceFlow } from './EditDeviceFlow';
+import { DeleteDeviceFlow } from './DeleteDeviceFlow';
 
-export const FlowRenderer = () => {
+export function FlowRenderer() {
   const { flow } = useFlowControllerState();
 
   switch (flow) {

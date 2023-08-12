@@ -1,6 +1,6 @@
-import { Providers } from './components/Providerts.tsx';
-import { DevicesList } from './components/DevicesList.tsx';
-import { FlowRenderer } from './components/FlowRenderer.tsx';
+import { Providers } from './components/Providerts';
+import { DevicesList } from './components/DevicesList';
+import { FlowRenderer } from './components/FlowRenderer';
 
 function App() {
   return (
@@ -8,7 +8,7 @@ function App() {
       <DevicesList />
       <FlowRenderer />
     </Providers>
-  )
+  );
 }
 
-export default App
+export default App;

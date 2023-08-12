@@ -1,3 +1,5 @@
-export { FlowProvider } from './FlowProvider.tsx';
-export { useFlowControllerState, useFlowControllerDispatch, useFlowController } from './flowHooks.ts';
-export { reducer, FLOWS, createDevice, editDevice, deleteDevice, dismiss } from './ducks.ts';
+export { FlowProvider } from './FlowProvider';
+export { useFlowControllerState, useFlowControllerDispatch, useFlowController } from './flowHooks';
+export {
+  reducer, FLOWS, createDevice, editDevice, deleteDevice, dismiss,
+} from './ducks';

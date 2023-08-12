@@ -11,13 +11,13 @@ import {
   TableCell,
   TableContainer,
   TableHead,
-  TableRow
+  TableRow,
 } from '@mui/material';
 import { useState } from 'react';
 
-import { Device } from '../domain/Device.ts';
-import { RowActions } from './RowActions.tsx';
-import { useDevices } from '../service/useDevices.ts';
+import { Device } from '../domain/Device';
+import { RowActions } from './RowActions';
+import { useDevices } from '../service/useDevices';
 
 const columnHelper = createColumnHelper<Device>();
 
@@ -38,7 +38,7 @@ const columns = [
     id: 'actions',
     cell: (props) => <RowActions {...props} />,
   }),
-]
+];
 
 const initialSorting: SortingState = [
   {
@@ -47,9 +47,9 @@ const initialSorting: SortingState = [
   },
 ];
 
-export const DevicesTable = () => {
+export function DevicesTable() {
   const { devices, error, isLoading } = useDevices();
-  const [sorting, setSorting] = useState(initialSorting)
+  const [sorting, setSorting] = useState(initialSorting);
 
   const table = useReactTable({
     data: devices,
@@ -63,12 +63,12 @@ export const DevicesTable = () => {
   });
 
   return (
-    <TableContainer sx={{ maxHeight: "calc(100vh - 60px)" }}>
+    <TableContainer sx={{ maxHeight: 'calc(100vh - 60px)' }}>
       <Table stickyHeader>
         <TableHead>
-          {table.getHeaderGroups().map(headerGroup => (
+          {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
-              {headerGroup.headers.map(header => (
+              {headerGroup.headers.map((header) => (
                 <TableCell key={header.id}>
                   {header.isPlaceholder ? null : (
                     <div
@@ -81,7 +81,7 @@ export const DevicesTable = () => {
                     >
                       {flexRender(
                         header.column.columnDef.header,
-                        header.getContext()
+                        header.getContext(),
                       )}
                       {{
                         asc: ' 🔼',
@@ -109,9 +109,9 @@ export const DevicesTable = () => {
               </TableCell>
             </TableRow>
           ) : null}
-          {table.getRowModel().rows.map(row => (
+          {table.getRowModel().rows.map((row) => (
             <TableRow key={row.id}>
-              {row.getVisibleCells().map(cell => (
+              {row.getVisibleCells().map((cell) => (
                 <TableCell key={cell.id}>
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </TableCell>
@@ -121,5 +121,5 @@ export const DevicesTable = () => {
         </TableBody>
       </Table>
     </TableContainer>
-  )
-};
+  );
+}

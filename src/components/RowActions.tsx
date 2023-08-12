@@ -2,11 +2,10 @@ import { CellContext } from '@tanstack/react-table';
 import { IconButton } from '@mui/material';
 import { Edit, Delete } from '@mui/icons-material';
 
-import { Device } from '../domain/Device.ts';
+import { Device } from '../domain/Device';
 import { deleteDevice, editDevice, useFlowControllerDispatch } from './flows';
 
-
-export const RowActions = (props: CellContext<Device, unknown>) => {
+export function RowActions(props: CellContext<Device, unknown>) {
   const dispatch = useFlowControllerDispatch();
   return (
     <div>
