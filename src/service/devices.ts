@@ -5,7 +5,7 @@ import { CreateDeviceDTO } from './dto/CreateDeviceDTO';
 import { GetDevicesDTO } from './dto/GetDevicesDTO';
 import { DeviceDTO } from './dto/DeviceDTO';
 
-const url = 'http://localhost:4000/devices';
+const url = '/devices';
 
 export const getDevices = async (): Promise<Device[]> => {
   const res = await axios.get<GetDevicesDTO>(url);
